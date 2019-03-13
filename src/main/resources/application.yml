@@ -1,34 +1,14 @@
-server:
-  port: 8080
-  context-path: /api
-  tomcat:
-    max-threads: 1000
-    min-spare-threads: 50
-  connection-timeout: 5000
 spring:
   profiles:
     active: dev
-  http:
-    multipart:
-      maxFileSize: -1
   datasource:
-    url: jdbc:mysql://localhost:3306/database?useUnicode=true&characterEncoding=UTF-8&useSSL=true
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/dbgirl
     username: root
-    password: root
-    driverClassName: com.mysql.jdbc.Driver
+    password: 123456
   jpa:
-    database: MYSQL
-    showSql: true
     hibernate:
-      namingStrategy: org.hibernate.cfg.ImprovedNamingStrategy
-    properties:
-      hibernate:
-        dialect: org.hibernate.dialect.MySQL5Dialect
-mybatis:
-  configuration:
-     #配置项：开启下划线到驼峰的自动转换. 作用：将数据库字段根据驼峰规则自动注入到对象属性。
-     map-underscore-to-camel-case: true
-appKey: 1
-appSecret: 1
-bucket: lynn
-endPoint: https://www.aliyun.com
+      ddl-auto: update
+    show-sql: true
+    database-platform: org.hibernate.dialect.MySQLDialect
+
